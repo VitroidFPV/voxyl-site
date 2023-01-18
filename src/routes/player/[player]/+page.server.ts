@@ -10,25 +10,47 @@ async function uuidFromIgn(ign: string): Promise<string> {
 }
 
 async function getPlayerInfo(uuid: string): Promise<object> {
-	const url = `https://api.voxyl.net/player/stats/overall/${uuid}?api=${SECRET_API_KEY}`;
-	const post = await fetch(url)
+	const options = `${uuid}?api=${SECRET_API_KEY}`
+	const urlInfo = "https://api.voxyl.net/player/info/";
+	const urlOverall = "https://api.voxyl.net/player/stats/overall/";
+	const urlGame = "https://api.voxyl.net/player/stats/game/";
+	const urlAchievements = "https://api.voxyl.net/achievements/player/";
+	const urlAchievementsInfo = "https://api.voxyl.net/achievements/info/";
+
+	const playerInfo = await fetch(urlInfo + options)
+		.then((res) => res.json())
+	const playerOverall = await fetch(urlOverall + options)
+		.then((res) => res.json())
+	const playerGame = await fetch(urlGame + options)
+		.then((res) => res.json())
+	const playerAchievements = await fetch(urlAchievements + options)
+		.then((res) => res.json())
+	const playerAchievementsInfo = await fetch(urlAchievementsInfo + options)
 		.then((res) => res.json())
 
-	return post.level
+
+	const player = {
+		...playerInfo,
+		...playerOverall,
+		...playerGame,
+		...playerAchievements,
+		...playerAchievementsInfo,
+		uuid
+	}
+
+	return player
 }
 
 export const load = (async ({ params }) => {
 
 	const uuid: string = (await uuidFromIgn(params.player));
-	const level = await getPlayerInfo(uuid);
-	const url = `https://api.voxyl.net/player/stats/overall/${uuid}?api=${SECRET_API_KEY}`;
+	const player = await getPlayerInfo(uuid);
 
 	const query = params;
 	
-	if (level) {
+	if (player) {
 		return {
-			uuid,
-			level,
+			player,
 			query,
 		}
 		// console.log(post)
