@@ -17,6 +17,11 @@
 	]
 
 	let player: any
+	let description: string
+	let title: string
+	let prefix: string
+	let color: string
+	let image: string
 
 	$: {
 		player = data.player;
@@ -51,19 +56,20 @@
 
 		player.achievementsAmount = player.achievements.length;
 		player.achievementsGoal = player.info.length
+		prefix = "Voxyl Stats • "
+		title = `${player.lastLoginName} • ${player.level}⭐`
+		description = 
+			`
+			Wins: ${player.wins}
+			Weighted: ${player.weightedwins}
+			Kills: ${player.kills}
+			Finals: ${player.finals}
+			Beds: ${player.beds}
+			Achievements: ${player.achievementsAmount}/${player.achievementsGoal}
+			`
+		color = "#6B46C1"
 	}
-	let prefix = "Voxyl Stats • "
-	let title = `${data.player.lastLoginName} • ${data.player.level}⭐`
-	let description = 
-		`
-		Wins: ${data.player.wins}
-		Weighted: ${data.player.weightedwins}
-		Kills: ${data.player.kills}
-		Finals: ${data.player.finals}
-		Beds: ${data.player.beds}
-		Achievements: ${data.player.achievementsAmount}/${data.player.achievementsGoal}
-		`
-	let color = "#6B46C1"
+
 
 </script>
 
