@@ -4,7 +4,7 @@
 	// console.log(JSON.stringify(data, null, 2));
 	console.log(data)
 
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import InfoSmall from '$components/player/InfoSmall.svelte';
 
 	let displayStats = [
@@ -68,7 +68,17 @@
 		</div>
 		<div class="flex flex-col items-center">
 			<div class="mb-8 w-96 items-center flex flex-col">
-				<div class="md:text-6xl text-4xl mb-2">{player.lastLoginName}</div>
+				<div class="transition-container">
+					{#key player.lastLoginName}
+						<div 
+							class="md:text-6xl text-4xl mb-2"
+							in:fly={{duration: 300, x: 20, delay: 100}}
+							out:fly|local={{duration: 300, x: -20, delay: 100}}
+						>
+							{player.lastLoginName}
+						</div>
+					{/key}						
+				</div>
 				<div class="h-1 w-full bg-yellow-500 flex items-center justify-center">
 					<div class="text-xl dark:bg-dark-800 bg-violet-100 px-2 mt-2 transition-colors duration-300">{player.level}</div>
 				</div>
@@ -80,7 +90,7 @@
 						name={stat.name}
 						value={player[stat.value]}
 						color={stat.color}
-						delay={i * 50}
+						delay={i * 50 + 200}
 						goal={player[stat.goal]}
 					/>
 				{/each}

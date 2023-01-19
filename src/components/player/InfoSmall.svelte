@@ -13,7 +13,7 @@
 	<div class="transition-container">
 		{#key value}
 			<div class="font-minecraft md:text-xl text-lg flex info-small-text col-span-1 row-span-1" 
-			in:fly|local={{duration: 300, x: 20, delay: delay}}
+			in:fly={{duration: 300, x: 20, delay: delay}}
 			out:fly|local={{duration: 300, x: -20, delay: delay}}
 			>
 			{value}
