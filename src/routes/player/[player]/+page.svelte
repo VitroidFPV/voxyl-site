@@ -52,7 +52,33 @@
 		player.achievementsAmount = player.achievements.length;
 		player.achievementsGoal = player.info.length
 	}
+	let prefix = "Voxyl Stats • "
+	let title = `${data.player.lastLoginName} • ${data.player.level}⭐`
+	let description = 
+		`
+		Wins: ${data.player.wins}
+		Weighted: ${data.player.weightedwins}
+		Kills: ${data.player.kills}
+		Finals: ${data.player.finals}
+		Beds: ${data.player.beds}
+		Achievements: ${data.player.achievementsAmount}/${data.player.achievementsGoal}
+		`
+	let color = "#6B46C1"
+
 </script>
+
+<svelte:head>
+	<title>{prefix}{title}</title>
+	<meta property="og:image" content="https://visage.surgeplay.com/full/720/{player.uuid}" />
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Voxyl Stats" />
+	<meta property="og:title" content="{prefix}{title}" />
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta content="https://vitroidfpv.com/" property="og:url" />
+	<meta name="theme-color" content={color} />
+</svelte:head>
 
 <div class="flex flex-col max-w-screen h-full">
 	<div class="flex md:flex-row justify-between flex-col md:px-16 px-6 pt-16 md:items-start items-center h-full w-full font-minecraft">
