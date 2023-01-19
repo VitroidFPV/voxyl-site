@@ -68,9 +68,9 @@
 		</div>
 		<div class="flex flex-col items-center">
 			<div class="mb-8 w-96 items-center flex flex-col">
-				<div class="text-6xl">{player.lastLoginName}</div>
+				<div class="md:text-6xl text-4xl mb-2">{player.lastLoginName}</div>
 				<div class="h-1 w-full bg-yellow-500 flex items-center justify-center">
-					<div class="text-xl bg-dark-800 px-2">{player.level}</div>
+					<div class="text-xl dark:bg-dark-800 bg-violet-100 px-2 mt-2 transition-colors duration-300">{player.level}</div>
 				</div>
 			</div>
 			<div class="grid grid-cols-2 grid-rows-3 gap-y-12">

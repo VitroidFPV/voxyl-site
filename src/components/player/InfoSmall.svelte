@@ -9,10 +9,10 @@
 </script>
 
 <div class="pb-6 flex flex-col info-small">
-	<div class="text-4xl {color}">{name}:</div>
+	<div class="md:text-4xl text-2xl {color}">{name}:</div>
 	<div class="transition-container">
 		{#key value}
-			<div class="font-minecraft text-xl flex info-small-text col-span-1 row-span-1" 
+			<div class="font-minecraft md:text-xl text-lg flex info-small-text col-span-1 row-span-1" 
 			in:fly|local={{duration: 300, x: 20, delay: delay}}
 			out:fly|local={{duration: 300, x: -20, delay: delay}}
 			>

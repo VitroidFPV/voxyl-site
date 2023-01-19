@@ -40,7 +40,7 @@
 	</div>
 	<ThemeToggle/>
 </nav>
-<div class="max-w-full z-20 fixed origin-center h-fit md:scale-y-[0.34] md:top-0 top-14">
+<div class="max-w-full z-20 top-14 fixed origin-top h-fit md:scale-y-[0.34]">
 	<div>
 		<svg
 			class="max-w-full h-fit rotate-180"
