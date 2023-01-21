@@ -2,18 +2,60 @@
 	import type { PageData } from './$types';
   	export let data: PageData;
 	// console.log(JSON.stringify(data, null, 2));
-	console.log(data)
+	// console.log(data)
+	console.log(Object.entries(data.player.stats).map(([key, value]) => key))
 
 	import { fade, fly } from 'svelte/transition';
 	import InfoSmall from '$components/player/InfoSmall.svelte';
+	import GameCard from '$components/player/GameCard.svelte';
 
 	let displayStats = [
 		{name: "Wins", value: "wins", color: "text-lime-500"},
 		{name: "Weighted", value: "weightedwins", color: "text-sky-500"},
 		{name: "Kills", value: "kills", color: "text-rose-700"},
-		{name: "Finals", value: "finals", color: "text-pink-600"},
-		{name: "Beds", value: "beds", color: "text-purple-500"},
+		{name: "Finals", value: "finals", color: "text-pink-500"},
+		{name: "Beds", value: "beds", color: "text-violet-500"},
 		{name: "Achievements", value: `achievementsAmount`, color: "text-yellow-500", goal: `achievementsGoal`},
+	]
+
+	let gamemodes = 
+	[
+		{name: "1v1 Bed Bridge Fight", value: "bridgesSingle"},
+		{name: "2v2 Bed Bridge Fight", value: "bridgesDouble"},
+		{name: "1v1 Comp Bed Bridge Fight", value: "compBridgeSingle"},
+		{name: "1v1 Flat Fight", value: "flatFightSingle"},
+		{name: "2v2 Ground Fight", value: "groundDouble"},
+		{name: "Party Games", value: "partyGames"},
+		{name: "1v1 Old Resource Collect", value: "resourceOldSingle"},
+		{name: "1v1 Bed Rush", value: "bedRushSingle"},
+		{name: "1v1 Resource Collect", value: "resourceSingle"},
+		{name: "2v2 Bed Rush", value: "bedRushDouble"},
+		{name: "2v2 Pearl fight", value: "pearlFightDouble"},
+		{name: "Normal Block Sumo", value: "sumo"},
+		{name: "2v2 Ladder Fight", value: "ladderFightDouble"},
+		{name: "2v2 Resource Collect", value: "resourceDouble"},
+		{name: "Obstacles", value: "obstacleSingle"},
+		{name: "1v1 Void Fight", value: "voidSingle"},
+		{name: "1v1 Ladder Fight", value: "ladderFightSingle"},
+		{name: "Bedwars Normal Solo", value: "bedwarsNormalSingle"},
+		{name: "2v2 Bow Fight", value: "bowFightDouble"},
+		{name: "Miniwars 2s", value: "miniwarsDouble"},
+		{name: "Bedwars Late Game 2s", value: "bedwarsLateDouble"},
+		{name: "1v1 Pearl Fight", value: "pearlFightSingle"},
+		{name: "2v2 Flat Fight", value: "flatFightDouble"},
+		{name: "2v2 Stick Fight", value: "stickFightDouble"},
+		{name: "2v2 Old Resource Collect", value: "resourceOldDouble"},
+		{name: "1v1 Ground Fight", value: "groundSingle"},
+		{name: "1v1 Stick Fight", value: "stickFightSingle"},
+		{name: "Bedwars Normal 2s", value: "bedwarsNormalDouble"},
+		{name: "2v2 Void Fight", value: "voidDouble"},
+		{name: "Beta Block Sumo", value: "betaSumo"},
+		{name: "Miniwars Solo", value: "miniwarsSolo"},
+		{name: "1v1 Bow Fight", value: "bowFightSingle"},
+		{name: "Bedwars Late Game Solo", value: "bedwarsLateSingle"},
+		{name: "Overall Sumo Duels", value: "sumoduels"},
+		{name: "1v1 Sumo Duels", value: "sumoDuelsSolo"},
+		{name: "2v2 Sumo Duels", value: "sumoDuelsDouble"},
 	]
 
 	let player: any
@@ -128,6 +170,15 @@
 				{/each}
 			</div>
 		</div>
+	</div>
+
+	<div class="grid md:grid-cols-4 grid-cols-2 justify-between gap-4 gap-y-8 pt-16 h-full w-full font-minecraft">
+		{#each gamemodes as gamemode}
+			<GameCard
+				name={gamemode.name}
+				stats={player.stats[gamemode.value]}
+			/>
+		{/each}
 	</div>
 </div>
 
