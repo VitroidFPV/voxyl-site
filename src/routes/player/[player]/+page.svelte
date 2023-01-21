@@ -3,11 +3,14 @@
   	export let data: PageData;
 	// console.log(JSON.stringify(data, null, 2));
 	// console.log(data)
+	// @ts-ignore
 	console.log(Object.entries(data.player.stats).map(([key, value]) => key))
 
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
+	import { quintOut } from "svelte/easing";
 	import InfoSmall from '$components/player/InfoSmall.svelte';
 	import GameCard from '$components/player/GameCard.svelte';
+	import Separator from '$components/Separator.svelte';
 
 	let displayStats = [
 		{name: "Wins", value: "wins", color: "text-lime-500"},
@@ -64,6 +67,8 @@
 	let prefix: string
 	let color: string
 	let image: string
+
+	let statsOpen = false
 
 	$: {
 		player = data.player;
@@ -129,7 +134,7 @@
 </svelte:head>
 
 <div class="flex flex-col max-w-screen h-full">
-	<div class="flex md:flex-row justify-between flex-col md:px-16 px-6 pt-16 md:items-start items-center h-full w-full font-minecraft">
+	<div class="flex md:flex-row justify-between flex-col md:px-32 px-6 pt-16 md:items-start items-center h-full w-full font-minecraft">
 		<div class="transition-container object-contain w-72 mt-8 mr-8 md:mb-0 mb-8">
 			{#key player}
 				<img
@@ -172,13 +177,31 @@
 		</div>
 	</div>
 
-	<div class="grid md:grid-cols-4 grid-cols-2 justify-between gap-4 gap-y-8 pt-16 h-full w-full font-minecraft">
-		{#each gamemodes as gamemode}
-			<GameCard
-				name={gamemode.name}
-				stats={player.stats[gamemode.value]}
-			/>
-		{/each}
+	<div>
+		<Separator></Separator>
+		<div class="py-8 w-full flex items-center justify-center">
+			<button 
+				class="font-semibold text-xl rounded-full dark:bg-violet-400/20 bg-violet-900/20 p-3 
+				px-6 opacity-75 duration-300 outline-none hover:opacity-100 hover:text-violet-500"
+				on:click={() => statsOpen = !statsOpen}
+			>
+				Show stats
+			</button>
+		</div>
+		{#if statsOpen}
+			<div 
+				class="p-16 grid md:grid-cols-4 grid-cols-2 justify-between gap-4 gap-y-8 pt-16 h-full 
+				w-full font-minecraft"
+				transition:slide|local={{duration: 800, easing: quintOut }}
+			>
+				{#each gamemodes as gamemode}
+					<GameCard
+						name={gamemode.name}
+						stats={player.stats[gamemode.value]}
+					/>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>
 
