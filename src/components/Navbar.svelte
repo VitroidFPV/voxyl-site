@@ -16,7 +16,7 @@
 	}
 </script>
 
-<nav class="h-16 dark:bg-[#533a8a] bg-[#bca2fa] fixed w-full flex items-center px-4 text-xl duration-300 justify-between shadow-[0px_40px_35px_0px] shadow-black/25 z-20">
+<nav class="h-16 dark:bg-[#533a8a] bg-[#bca2fa] fixed w-full flex items-center px-4 text-xl duration-300 justify-between shadow-[0px_40px_35px_0px]shadow-black/25 z-20">
 	<div class="flex md:w-fit w-full md:ml-14 h-full items-center">
 		<a href="/" class="bg-gradient-to-r from-current to-current bg-no-repeat bg-bottom bg-0w hover:bg-100w duration-300 transition-all font-semibold opacity-50 hover:opacity-100">Home</a>
 		<div class="flex items-center">

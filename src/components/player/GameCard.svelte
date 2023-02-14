@@ -7,7 +7,7 @@
 </script>
 
 {#if stats !== undefined && Object.values(stats).some((value) => value !== 0)}
-	<div class="flex flex-col info-small pl-2 border-l-4 border-violet-500 pt-2 h-fit">
+	<div class="flex flex-col info-small pl-2 border-l-4 border-violet-600/90 pt-2 h-fit">
 		<div class="text-xl mb-2">{name}:</div>
 		<div class="grid grid-cols-2 grid-rows-2">
 			{#if stats !== undefined}
@@ -15,7 +15,7 @@
 					<div class="transition-container mt-2">
 						{#if value !== 0}
 							<div>
-								<div class="font-minecraft text-lg stat-{name} capitalize">
+								<div class="font-minecraft text-lg dark:text-violet-300 text-violet-900/60 capitalize">
 									{name}:
 								</div>
 								<div class="font-minecraft text-base">
