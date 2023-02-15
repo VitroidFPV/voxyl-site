@@ -3,7 +3,7 @@
 </script>
 
 <div class="p-16">
-	<div class="my-32">
+	<div class="py-16 -mt-8">
 		<h1 class="text-[100px] font-bold text-violet-500">Voxyl Stats</h1>
 		<h2 class="dark:text-violet-200 text-violet-900/40 text-3xl">Track your BWP progress, the easy way!</h2>
 	</div>
