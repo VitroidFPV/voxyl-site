@@ -12,7 +12,7 @@
 	import GameCard from '$components/player/GameCard.svelte';
 	import Separator from '$components/Separator.svelte';
 
-	let displayStats = [
+	let displayStats: any[] = [
 		{name: "Wins", value: "wins", color: "text-lime-500"},
 		{name: "Weighted", value: "weightedwins", color: "text-sky-500"},
 		{name: "Kills", value: "kills", color: "text-rose-700"},
@@ -21,7 +21,7 @@
 		{name: "Achievements", value: `achievementsAmount`, color: "text-yellow-500", goal: `achievementsGoal`},
 	]
 
-	let gamemodes = 
+	let gamemodes: any[] = 
 	[
 		{name: "1v1 Bed Bridge Fight", value: "bridgesSingle"},
 		{name: "2v2 Bed Bridge Fight", value: "bridgesDouble"},

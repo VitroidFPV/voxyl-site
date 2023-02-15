@@ -67,7 +67,7 @@ export const load = (async ({ params }) => {
 	const query = params;
 	
 	if (guild) {
-		console.log(guild)
+		// console.log(guild)
 		return {
 			guild,
 			query,

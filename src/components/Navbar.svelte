@@ -3,16 +3,32 @@
 	import ThemeToggle from "$components/ThemeToggle.svelte";
 	import { goto } from "$app/navigation";
 
-	let searched:string = "";
+	let searchedPlayer:string = "";
+	let searchedGuild:string = "";
 
-	async function search() {
-		await goto(`/player/${searched}`);
+	async function search(req:string) {
+		switch (req) {
+			case "player":
+				// alert("player search")
+				await goto(`/player/${searchedPlayer}`);
+				break;
+			case "guild":
+				// alert("guild search")
+				goto(`/guild/${searchedGuild}`);
+				break;
+		}
 	}
 
-	async function enter(e:KeyboardEvent) {
+	async function enter(e:KeyboardEvent, req:string) {
 		if (e.key === "Enter") {
-			search();
+			// alert(req + " enter")
+			search(req);
 		}
+	}
+
+	$: {
+		console.log(searchedPlayer)
+		console.log(searchedGuild)
 	}
 </script>
 
@@ -25,12 +41,30 @@
 				name="player"
 				id="player"
 				placeholder="Player"
-				bind:value={searched}
-				on:keydown={(e) => enter(e)}
+				bind:value={searchedPlayer}
+				on:keydown={(e) => enter(e, "player")}
 				class="font-semibold md:ml-16 ml-8 rounded-full h-10 dark:bg-white/20 bg-black/20 px-4
 				placeholder:text-black/30 dark:placeholder:text-white/30 w-48 mr-3 opacity-75 duration-300 outline-none hover:opacity-100 focus-within:opacity-100"
 			>
-			<button on:click={search}>
+			<button on:click={() => search("player")}>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-8 w-8 opacity-50 hover:opacity-100 duration-300">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+				</svg>
+			</button>
+
+		</div>
+		<div class="flex items-center">
+			<input
+				type="text"
+				name="guild"
+				id="guild"
+				placeholder="Guild"
+				bind:value={searchedGuild}
+				on:keydown={(e) => enter(e, "guild")}
+				class="font-semibold md:ml-16 ml-8 rounded-full h-10 dark:bg-white/20 bg-black/20 px-4
+				placeholder:text-black/30 dark:placeholder:text-white/30 w-48 mr-3 opacity-75 duration-300 outline-none hover:opacity-100 focus-within:opacity-100"
+			>
+			<button on:click={() => search("guild")}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-8 w-8 opacity-50 hover:opacity-100 duration-300">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
 				</svg>
