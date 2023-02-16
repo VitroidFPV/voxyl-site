@@ -91,7 +91,44 @@
 	}
 
 	sortPlayers();
+
+	// let top ten be the first 10 players in the array with their name and level
+	let topPlayers = guild.members.slice(0, 5).map(player => {
+		return {
+			name: player.stats.lastLoginName,
+			level: player.stats.level
+		}
+	})
+
+	let prefix: string = "Voxyl Stats • "
+	let title: string = guild.name
+	let description: string = 
+	`
+${guild.desc}
+
+Owner: ${owner.name}
+${guild.members.length}/50 members
+Total XP: ${guild.xp}
+Created: ${daysSinceCreated} days ago
+
+Top players: 
+${topPlayers.map(player => player.name + " (" + player.level + ")").join("\n")}
+	`
+	let color: string = "#6B46C1"
 </script>
+
+<svelte:head>
+	<title>{prefix}{title}</title>
+	<!-- <meta property="og:image" content="https://visage.surgeplay.com/full/720/{player.uuid}" /> -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Voxyl Stats" />
+	<meta property="og:title" content="{prefix}{title}" />
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta content="https://vitroidfpv.com/" property="og:url" />
+	<meta name="theme-color" content={color} />
+</svelte:head>
 
 <div class="flex flex-col max-w-screen h-full md:p-16 px-8">
 
