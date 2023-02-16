@@ -2,6 +2,11 @@
 	import AboutCard from "$components/AboutCard.svelte";
 </script>
 
+<svelte:head>
+	<title>Voxyl Stats</title>
+	<meta name="description" content="Track your BWP progress, the easy way!">
+</svelte:head>
+
 <div class="p-16">
 	<div class="py-16 -mt-8">
 		<h1 class="text-[100px] font-bold text-violet-500">Voxyl Stats</h1>
