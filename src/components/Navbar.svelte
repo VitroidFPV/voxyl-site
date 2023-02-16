@@ -4,6 +4,7 @@
 	import { goto } from "$app/navigation";
 	import { fly } from "svelte/transition";
 	import { afterNavigate } from "$app/navigation";
+	import { onMount } from "svelte";
 
 	let searchedPlayer:string = "";
 	let searchedGuild:string = "";
@@ -37,14 +38,14 @@
 		loadingOpen = false;
 	})
 
-	// if loadingOpen is true, prevent scrolling
-	$: {
-		if (loadingOpen) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "auto";
-		}
-	}
+	onMount(() => {
+		// prevent scrolling if loadingOpen is true
+		document.addEventListener("wheel", (e) => {
+			if (loadingOpen) {
+				e.preventDefault();
+			}
+		}, {passive: false});
+	})
 
 	// if loadingOpen has been true for over 3 seconds, show tooltip
 	$: {
