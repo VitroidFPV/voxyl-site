@@ -2,9 +2,14 @@
 	// @ts-ignore
 	import ThemeToggle from "$components/ThemeToggle.svelte";
 	import { goto } from "$app/navigation";
+	import { fly } from "svelte/transition";
+	import { afterNavigate } from "$app/navigation";
 
 	let searchedPlayer:string = "";
 	let searchedGuild:string = "";
+	let open:boolean = false;
+	let loadingOpen:boolean = false;
+	let tooltipShow:boolean = false;
 
 	async function search(req:string) {
 		switch (req) {
@@ -15,6 +20,7 @@
 			case "guild":
 				// alert("guild search")
 				goto(`/guild/${searchedGuild}`);
+				loadingOpen = true;
 				break;
 		}
 	}
@@ -26,7 +32,30 @@
 		}
 	}
 
-	let open:boolean = false;
+
+	afterNavigate(() => {
+		loadingOpen = false;
+	})
+
+	// if loadingOpen is true, prevent scrolling
+	$: {
+		if (loadingOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+	}
+
+	// if loadingOpen has been true for over 3 seconds, show tooltip
+	$: {
+		if (loadingOpen) {
+			setTimeout(() => {
+				tooltipShow = true;
+			}, 3000);
+		} else {
+			tooltipShow = false;
+		}
+	}
 </script>
 
 <nav class="h-fit fixed w-full text-xl duration-300 shadow-[0px_40px_35px_0px]shadow-black/25 z-20">
@@ -103,3 +132,20 @@
 		</div>
 	</div>
 </nav>
+
+{#if loadingOpen}
+	<div class="fixed w-full h-full flex justify-center z-50 backdrop-blur-xl">
+		<div transition:fly class="w-80 h-fit p-8 bg-violet-500/50 border-violet-500 mt-32 border-2 rounded-2xl flex flex-col items-center">
+			<div class="text-2xl w-fit">Loading...</div>
+			<div class=h-8>
+				{#if tooltipShow}
+					<div transition:fly class="h-8">May take a while for larger guilds</div>
+				{/if}
+			</div>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="w-10 h-10 stroke-violet-500 mt-4 animate-spin">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+			</svg>
+
+		</div>
+	</div>
+{/if}
