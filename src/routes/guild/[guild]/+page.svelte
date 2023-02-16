@@ -93,7 +93,7 @@
 	sortPlayers();
 </script>
 
-<div class="flex flex-col max-w-screen h-full p-16">
+<div class="flex flex-col max-w-screen h-full md:p-16 px-8">
 
 {#await guild}
 	<div class="flex flex-col items-center justify-center h-full">
