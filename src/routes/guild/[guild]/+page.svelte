@@ -52,14 +52,17 @@
 	}
 
 	let owner: Owner;
-	guild.members.forEach(member => {
-		if (member.role == "OWNER") {
-			owner = {
-				name: member.stats.lastLoginName,
-				uuid: guild.ownerUUID
+
+	$: {
+		guild.members.forEach(member => {
+			if (member.role == "OWNER") {
+				owner = {
+					name: member.stats.lastLoginName,
+					uuid: guild.ownerUUID
+				}
 			}
-		}
-	})
+		})
+	}
 	// console.log(owner)
 
 	let daysSinceCreated = Math.floor((Date.now() / 1000 - guild.time) / 86400)
@@ -100,9 +103,15 @@
 		}
 	})
 
-	let prefix: string = "Voxyl Stats • "
-	let title: string = guild.name
-	let description: string = 
+	let prefix: string
+	let title: string
+	let description: string
+	let color: string
+
+	$: {
+		prefix = "Voxyl Stats • "
+		title = guild.name
+		description = 
 	`
 ${guild.desc}
 
@@ -114,7 +123,9 @@ Created: ${daysSinceCreated} days ago
 Top players: 
 ${topPlayers.map(player => player.name + " (" + player.level + ")").join("\n")}
 	`
-	let color: string = "#6B46C1"
+		color = "#6B46C1"
+	}
+
 </script>
 
 <svelte:head>
@@ -143,13 +154,16 @@ ${topPlayers.map(player => player.name + " (" + player.level + ")").join("\n")}
 			<!-- @ts-ignore -->
 			{guild.name}
 		</div>
+		<p class="text-xl w-1/2 my-4">{guild.desc}</p>
 		<div class="text-lg mb-4 flex items-center">Owned by: 
-			<span class="text-4xl text-violet-500 relative ml-2">{owner.name}</span>
-			<img 
-				src="https://visage.surgeplay.com/face/720/{owner.uuid}"
-				alt="Player Skin"
-				class="w-12 h-12 relative bottom-3 ml-4"
-			>
+			<span class="hover:text-violet-400 duration-300 text-4xl text-violet-500 relative ml-2"><a href="/player/{owner.name}">{owner.name}</a></span>
+			{#key owner.uuid}
+				<img 
+					src="https://visage.surgeplay.com/face/720/{owner.uuid}"
+					alt="Player Skin"
+					class="w-12 h-12 relative bottom-3 ml-4"
+				>
+			{/key}
 		</div>
 		<div class="text-lg">Members: 
 			<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{guild.members.length}</span>
