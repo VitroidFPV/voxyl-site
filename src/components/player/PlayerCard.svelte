@@ -5,7 +5,7 @@
 </script>
 
 <a href="/player/{name}"  target="_blank" rel="noreferrer">
-	<div class="dark:bg-violet-500/20 bg-violet-900/20 border-2 border-transparent hover:border-violet-500 group hover:-translate-y-1
+	<div class="dark:bg-violet-500 bg-violet-900 !bg-opacity-10 hover:!bg-opacity-20 border-2 border-transparent hover:border-violet-500 group hover:-translate-y-1
 		rounded-2xl w-full h-full duration-500 p-4 relative shadow-lg"
 	>
 		<div class="rounded-[4rem] float-left dark:border-dark-800 border-violet-100 dark:bg-dark-800 bg-violet-100
