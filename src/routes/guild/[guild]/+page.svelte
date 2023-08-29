@@ -65,7 +65,10 @@
 	}
 	// console.log(owner)
 
-	let daysSinceCreated = Math.floor((Date.now() / 1000 - guild.time) / 86400)
+	let daysSinceCreated = 0
+	$: {
+		daysSinceCreated = Math.floor((Date.now() / 1000 - guild.time) / 86400)
+	}
 	console.log(daysSinceCreated)
 
 	const sortOptions = ["name", "level"]
@@ -165,19 +168,20 @@ ${topPlayers.map(player => player.name + " (" + player.level + ")").join("\n")}
 				>
 			{/key}
 		</div>
-		<div class="text-lg">Members: 
-			<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{guild.members.length}</span>
-			<span class="text-2xl dark:text-neutral-100 text-neutral-900 top-1.5 relative"> / 50</span>
-		</div>
-		<div class="text-lg">Total XP: 
-			<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{guild.xp}
-			<span class="text-2xl dark:text-neutral-100 text-neutral-900"> xp</span>
-		</div>
-		<div class="text-lg">Created: 
-			<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{daysSinceCreated}
-			<span class="text-2xl dark:text-neutral-100 text-neutral-900"> days ago</span>
-		</div>
-
+		{#key guild}
+			<div class="text-lg">Members: 
+				<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{guild.members.length}</span>
+				<span class="text-2xl dark:text-neutral-100 text-neutral-900 top-1.5 relative"> / 50</span>
+			</div>
+			<div class="text-lg">Total XP: 
+				<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{guild.xp}
+				<span class="text-2xl dark:text-neutral-100 text-neutral-900"> xp</span>
+			</div>
+			<div class="text-lg">Created: 
+				<span class="text-2xl text-violet-500 relative top-1.5 ml-2">{daysSinceCreated}
+				<span class="text-2xl dark:text-neutral-100 text-neutral-900"> days ago</span>
+			</div>
+		{/key}
 		<div class="text-3xl text-violet-500 mt-4">Members:</div>
 		<div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 mt-4 gap-8">
 			<!-- <PlayerCard 

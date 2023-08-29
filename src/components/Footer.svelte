@@ -26,15 +26,16 @@
 				/>
 			</svg>
 		</div>
-		<div class="w-full h-56 dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex p-16 pt-8">
+		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex p-16 pt-8">
 			<div class="w-1/4 text-4xl font-bold text-violet-500">Voxyl Stats</div>
-			<!-- <div class="flex flex-col md:w-1/4">
+			<div class="flex flex-col md:w-1/4">
 				<div class="font-semibold text-2xl mb-2 text-violet-500">Credits:</div>
-				<FooterCredits name="Vitroid" role="Site Development" link="/" />
-				<FooterCredits name="SirJosh" role="Site Development" link="/" />
+				<FooterCredits name="Vitroid" role="Site Development" link="https://vitroidfpv.com/" />
+				<FooterCredits name="SirJosh" role="Site Development" link="https://github.com/lightninq720" />
 				<FooterCredits name="_lightninq" role="Bot Development" link="/" />
 				<FooterCredits name="Sin" role="Overlay Development" link="/" />
-			</div>			 -->
+				<FooterCredits name="ambmt" role="Overlay Development" link="https://github.com/ambmt" />
+			</div>			
 		</div>
 	</div>
 </footer>
