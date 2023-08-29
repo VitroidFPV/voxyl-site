@@ -54,11 +54,12 @@
 	let owner: Owner;
 
 	$: {
+		// for each member, if their role is "OWNER", set owner to their name and uuid
 		guild.members.forEach(member => {
 			if (member.role == "OWNER") {
 				owner = {
 					name: member.stats.lastLoginName,
-					uuid: guild.ownerUUID
+					uuid: member.uuid
 				}
 			}
 		})
