@@ -1,5 +1,6 @@
 <script>
 	import FooterCredits from "$components/FooterCredits.svelte";
+	import FooterLinks from "$components/FooterLinks.svelte";
 </script>
 <footer class="w-full">
 	<div class="h-fit bg-violet-100 dark:bg-dark-800 duration-300">
@@ -26,9 +27,9 @@
 				/>
 			</svg>
 		</div>
-		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex p-16 pt-8">
+		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex md:flex-row flex-col md:items-center md:p-16 p-8 pt-8">
 			<div class="w-1/4 text-4xl font-bold text-violet-500">Voxyl Stats</div>
-			<div class="flex flex-col md:w-1/4">
+			<div class="flex flex-col md:w-1/4 md:mr-8">
 				<div class="font-semibold text-2xl mb-2 text-violet-500">Credits:</div>
 				<FooterCredits name="Vitroid" role="Site Development" link="https://vitroidfpv.com/" />
 				<FooterCredits name="SirJosh" role="Site Development" link="/" />
@@ -36,7 +37,14 @@
 				<FooterCredits name="FirestarAD" role="Bot Development" link="https://github.com/firestarad" />
 				<FooterCredits name="Sin" role="Overlay Development" link="/" />
 				<FooterCredits name="ambmt" role="Overlay Development" link="https://github.com/ambmt" />
-			</div>			
+			</div>
+			<div class="flex flex-col md:w-1/4">
+				<div class="font-semibold text-2xl mb-2 text-violet-500">Links:</div>
+				<FooterLinks name="Support" link="https://discord.com/invite/fBnfWXSDpu" />
+				<FooterLinks name="Buymeacoffee" link="https://www.buymeacoffee.com/voxlystats/" />
+				<FooterLinks name="BWP Stats Bot" link="https://discord.com/api/oauth2/authorize?client_id=926814210321707028&permissions=277025442816&scope=bot%20applications.commands" />
+				<FooterLinks name="BWP Stats Overlay" link="https://github.com/BWP-Stats/Voxyl-Overlay/releases/tag/v1.3.0" />
+			</div>		
 		</div>
 	</div>
 </footer>
