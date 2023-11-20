@@ -27,7 +27,7 @@
 				/>
 			</svg>
 		</div>
-		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex md:flex-col md:items-center md:p-16 p-8 pt-8">
+		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex md:flex-row flex-col md:items-center md:p-16 p-8 pt-8">
 			<div class="w-1/4 text-4xl font-bold text-violet-500">Voxyl Stats</div>
 			<div class="flex flex-col md:w-1/4 md:mr-8">
 				<div class="font-semibold text-2xl mb-2 text-violet-500">Credits:</div>
