@@ -27,9 +27,9 @@
 				/>
 			</svg>
 		</div>
-		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex md:flex-row flex-col md:items-center md:p-16 p-8 pt-8">
-			<div class="w-1/4 text-4xl font-bold text-violet-500">Voxyl Stats</div>
-			<div class="flex flex-col md:w-1/4 md:mr-8">
+		<div class="w-full h-fit dark:bg-[#2d2441] bg-[#bca2fa] duration-300 flex md:flex-row flex-col justify-between md:items-start items-center md:p-16 p-10 pt-8 gap-8">
+			<div class="text-4xl font-bold text-violet-500 w-max">Voxyl Stats</div>
+			<div class="flex flex-col md:w-1/4 w-full">
 				<div class="font-semibold text-2xl mb-2 text-violet-500">Credits:</div>
 				<FooterCredits name="Vitroid" role="Site Development" link="https://vitroidfpv.com/" />
 				<FooterCredits name="SirJosh" role="Site Development" link="/" />
@@ -38,7 +38,7 @@
 				<FooterCredits name="Sin" role="Overlay Development" link="/" />
 				<FooterCredits name="ambmt" role="Overlay Development" link="https://github.com/ambmt" />
 			</div>
-			<div class="flex flex-col md:w-1/4">
+			<div class="flex flex-col md:w-1/4 w-full">
 				<div class="font-semibold text-2xl mb-2 text-violet-500">Links:</div>
 				<FooterLinks name="Support" link="https://discord.com/invite/fBnfWXSDpu" />
 				<FooterLinks name="Buymeacoffee" link="https://www.buymeacoffee.com/voxlystats/" />
