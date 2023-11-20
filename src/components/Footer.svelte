@@ -1,5 +1,6 @@
 <script>
 	import FooterCredits from "$components/FooterCredits.svelte";
+	import FooterLinks from "$components/FooterLinks.svelte";
 </script>
 <footer class="w-full">
 	<div class="h-fit bg-violet-100 dark:bg-dark-800 duration-300">
@@ -36,7 +37,14 @@
 				<FooterCredits name="FirestarAD" role="Bot Development" link="https://github.com/firestarad" />
 				<FooterCredits name="Sin" role="Overlay Development" link="/" />
 				<FooterCredits name="ambmt" role="Overlay Development" link="https://github.com/ambmt" />
-			</div>			
+			</div>
+			<div class="flex flex-col md:w-1/4">
+				<div class="font-semibold text-2xl mb-2 text-violet-500">Links:</div>
+				<FooterLinks name="Support" link="https://discord.com/invite/fBnfWXSDpu" />
+				<FooterLinks name="Buymeacoffee" link="https://www.buymeacoffee.com/voxlystats/" />
+				<FooterLinks name="BWP Stats Bot" link="https://discord.com/api/oauth2/authorize?client_id=926814210321707028&permissions=277025442816&scope=bot%20applications.commands" />
+				<FooterLinks name="BWP Stats Overlay" link="https://github.com/BWP-Stats/Voxyl-Overlay/releases/tag/v1.3.0" />
+			</div>		
 		</div>
 	</div>
 </footer>
